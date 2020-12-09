@@ -3,7 +3,7 @@
     <img alt="Vue logo" src="../assets/logo.png" />
     <router-link
       v-for="post in edges"
-      :to="{ name: 'Product', params: { slug: post.node.title } }"
+      :to="{ name: 'post', params: { slug: post.node.title } }"
       :key="post.node.title"
     >
       <article>
