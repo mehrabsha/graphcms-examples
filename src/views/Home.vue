@@ -38,7 +38,8 @@ export default {
       }
     );
 
-    const { data } = await response.json();
+    const data = await response.json();
+    console.log(data);
 
     this.errors = data.errors;
     this.loading = false;
