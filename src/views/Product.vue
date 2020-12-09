@@ -12,7 +12,8 @@ export default {
       product: null,
       error: null,
       loading: true,
-      post : null
+      post : null,
+      id: null
     };
   },
   created() {
@@ -22,10 +23,12 @@ export default {
   },
   watch: {
     // call again the method if the route changes
+
     $route: 'fetchData',
   },
   methods: {
     async fetchData() {
+      this.id = this.$route.params.id;
       this.error = null;
       this.post = null;
       this.loading = true;
@@ -36,10 +39,8 @@ export default {
           {
             method: 'POST',
             body: JSON.stringify({
-              query: `{values: simple(where: {id: $id}) { desc id title }}`,
-              variables: {
-                id: this.$route.params.id,
-              },
+              query: `{values: simple(where: {id: ${this.id} }) { desc id title }}`,
+
             }),
           }
         );
