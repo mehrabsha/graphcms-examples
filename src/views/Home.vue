@@ -21,8 +21,7 @@ export default {
   components: {},
   data() {
     return {
-      page: {},
-      edges: page.edges,
+      edges: [],
       loading: true,
       errors: [],
     };
@@ -40,7 +39,10 @@ export default {
 
     const data = await response.json();
     console.log(data);
-
+    this.edges = data.data.page.edges;
+    console.log(edges);
+    
+    
     this.errors = data.errors;
     this.loading = false;
     this.products = data.products;
