@@ -3,12 +3,12 @@
     <img alt="Vue logo" src="../assets/logo.png" />
     <router-link
       v-for="post in edges"
-      :to="{ name: 'Product', params: { slug: post.title } }"
-      :key="post.title"
+      :to="{ name: 'Product', params: { slug: post.node.title } }"
+      :key="post.node.title"
     >
       <article>
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.desc }}</p>
+        <h1>{{ post.node.title }}</h1>
+        <p>{{ post.node.desc }}</p>
       </article>
     </router-link>
   </div>
