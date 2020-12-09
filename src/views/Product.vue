@@ -29,6 +29,7 @@ export default {
   methods: {
     async fetchData() {
       this.id = this.$route.params.id;
+      console.log(`id => ${this.id}`);
       this.error = null;
       this.post = null;
       this.loading = true;
