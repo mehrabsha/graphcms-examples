@@ -40,7 +40,7 @@ export default {
     const data = await response.json();
     console.log(data);
     this.edges = data.data.page.edges;
-    console.log(edges);
+    console.log(this.edges);
     
     
     this.errors = data.errors;
