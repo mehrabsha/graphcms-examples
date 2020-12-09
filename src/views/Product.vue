@@ -40,7 +40,7 @@ export default {
           {
             method: 'POST',
             body: JSON.stringify({
-              query: `{values: simple(where: {id: ${this.id} }) { desc id title }}`,
+              query: `{values: simple(where: {id: "${this.id}" }) { desc id title }}`,
 
             }),
           }
