@@ -21,8 +21,8 @@ export default {
   components: {},
   data() {
     return {
-      pages: {},
-      edges: pages.edges,
+      page: {},
+      edges: page.edges,
       loading: true,
       errors: [],
     };
