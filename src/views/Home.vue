@@ -1,5 +1,6 @@
 <template>
   <div class="home" id="products">
+  hii
     <img alt="Vue logo" src="../assets/logo.png" />
     <router-link
       v-for="product in products"
