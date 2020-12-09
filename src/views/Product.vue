@@ -1,15 +1,8 @@
 <template>
-  <div class="product" v-if="product">
-    <h1>{{ product.name }}</h1>
-    <p>{{ product.description }}</p>
-    <p>
-      {{
-        new Intl.NumberFormat('de-DE', {
-          style: 'currency',
-          currency: 'EUR',
-        }).format(product.price / 100)
-      }}
-    </p>
+  <div class="product" v-if="post">
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.desc }}</p>
+
   </div>
 </template>
 <script>
@@ -19,6 +12,7 @@ export default {
       product: null,
       error: null,
       loading: true,
+      post : null
     };
   },
   created() {
@@ -42,14 +36,17 @@ export default {
           {
             method: 'POST',
             body: JSON.stringify({
-              query: `query GetProduct($slug: String){ product(where: {slug: $slug}) { name description price } }`,
+              query: `{values: simple(where: {id: $id}) { desc id title }}`,
               variables: {
                 id: this.$route.params.id,
               },
             }),
           }
         );
-        const { data } = await response.json();
+        const data = await response.json();
+        console.log(data);
+        this.post = data.data.values;
+        console.log(this.post);
         this.loading = false;
         this.error = data.error;
         this.product = data.product;
