@@ -38,13 +38,13 @@ export default {
       // replace `getPost` with your data fetching util / API wrapper
       try {
         const response = await fetch(
-          'https://api-eu-central-1.graphcms.com/v2/ck8sn5tnf01gc01z89dbc7s0o/master',
+          'https://api-eu-central-1.graphcms.com/v2/ckihde7o9k1nh01xmclrv9cy6/master',
           {
             method: 'POST',
             body: JSON.stringify({
               query: `query GetProduct($slug: String){ product(where: {slug: $slug}) { name description price } }`,
               variables: {
-                slug: this.$route.params.slug,
+                id: this.$route.params.id,
               },
             }),
           }
