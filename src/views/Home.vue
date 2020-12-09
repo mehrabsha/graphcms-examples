@@ -1,15 +1,14 @@
 <template>
   <div class="home" id="products">
-  hii
     <img alt="Vue logo" src="../assets/logo.png" />
     <router-link
-      v-for="product in products"
-      :to="{ name: 'Product', params: { slug: product.slug } }"
-      :key="product.slug"
+      v-for="post in edges"
+      :to="{ name: 'Product', params: { slug: post.title } }"
+      :key="post.title"
     >
       <article>
-        <h1>{{ product.name }}</h1>
-        <p>{{ product.description }}</p>
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.desc }}</p>
       </article>
     </router-link>
   </div>
@@ -22,18 +21,19 @@ export default {
   components: {},
   data() {
     return {
-      products: [],
+      pages: {},
+      edges: pages.edges,
       loading: true,
       errors: [],
     };
   },
   async created() {
     const response = await fetch(
-      'https://api-eu-central-1.graphcms.com/v2/ck8sn5tnf01gc01z89dbc7s0o/master',
+      'https://api-eu-central-1.graphcms.com/v2/ckihde7o9k1nh01xmclrv9cy6/master',
       {
         method: 'POST',
         body: JSON.stringify({
-          query: `{ products { name slug } }`,
+          query: `{  page: simplesConnection() {edges {node {id title}}}}`,
         }),
       }
     );
